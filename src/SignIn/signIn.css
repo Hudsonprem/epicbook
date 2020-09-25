@@ -1,0 +1,55 @@
+.signIn-div-background{
+    margin: 0%;
+    padding: 3%;
+    background-color: black;
+    display: grid;
+    
+    grid-template-columns: 450px;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-content: center;
+    justify-items: center;
+}
+
+
+.signIn-div
+{
+    text-align: left;
+    margin: 2% ;
+    border-radius: 10%;
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    padding: 10%;
+    background-color: white;
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+
+
+
+
+.custom-shape-divider-bottom-1600971516 {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    background: black;
+  }
+  
+  .custom-shape-divider-bottom-1600971516 svg {
+    position: relative;
+    display: block;
+    width: calc(188% + 1.3px);
+    height: 132px;
+    transform: rotateY(180deg);
+  }
+  
+  .custom-shape-divider-bottom-1600971516 .shape-fill {
+    fill: #275531;
+  }
+  
