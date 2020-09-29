@@ -3,7 +3,7 @@
     padding: 3%;
     background-color: black;
     display: grid;
-    grid-template-columns: 450px;
+    grid-template-columns: 480px;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -27,3 +27,8 @@
 
 
 
+@media only screen and (max-width: 500px) {
+    .signUp-div-background {
+        grid-template-columns: 85%;
+    }
+  }

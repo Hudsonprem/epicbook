@@ -1,87 +1,100 @@
 import React from "react";
-import Header from "../Home/header/main-header";
-import "./signIn.css";
+import "./compose.css";
 import axios from "axios";
 import {  ToastContainer , toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function Login(props) {
+
+function Update(props) {
     const baseUrl = "http://localhost:5000";
     const formik = useFormik({
         initialValues : {
-            Email:"",
-            Password:""
+            title:props.previous.title,
+            description:props.previous.description,
+            image:props.previous.image
         },
         validationSchema:yup.object({
            
-            Email: yup.string()
-            .email()
-            .required("Email is required"),
+            title: yup.string()
+            .required("title is required"),
           
-            Password: yup.string()
-            .required("password is required"),
+            description: yup.string()
+            .required("description is required"),
             
         }),
         onSubmit: (userInputData)=>{
-            axios.post(baseUrl + "/user/login",userInputData)
-            .then(res => {
-                localStorage.setItem("auth",JSON.stringify(res.data));
-                props.history.push("/");
-            })
-            .catch(err => {
-                toast.error(err.response.data)    
-            })
-         
-        }
+            
+           userInputData._id = props.previous._id  ;
+           console.log(userInputData);
+           axios.put(baseUrl + "/post/update",userInputData)
+           .then(res => { toast.success(res.data)}).then(e => {window.location.reload()})
+               
         
-    } )
+        .catch(err => {
+            toast.error(err.data)    
+        })
+        
+    } })
 
 
         return (
             <div>
-            <div className ="signIn-div-background" >
+            <div className ="compose-background" >
              <ToastContainer /> 
              
-            <form className="signIn-div"  autoComplete="off" onSubmit = {formik.handleSubmit}>
-                <h3 className="text-center">SIGN IN</h3>
+            <form className="compose" encType="multipart/form-data"  autoComplete="off" onSubmit = {formik.handleSubmit}>
+                <h3 className="text-center">Update post </h3>
 
 
                 <div className="form-group">
-                    <label>Email</label>
+                    <label>Title</label>
                     <input 
                     className="form-control"
                     type="text"  
-                    name="Email"
+                    name="title"
                     onChange={formik.handleChange}
-                    value={formik.values.Email}  
-                    placeholder="email" />
+                    value={formik.values.title}  
+                    placeholder="title" />
                 </div>
-                {formik.errors.Email ? (<div className="text-danger">
-                        {formik.errors.Email}
+                {formik.errors.title ? (<div className="text-danger">
+                        {formik.errors.title}
                 </div>): null }
 
                 <div className="form-group">
-                    <label >Password</label>
-                    <input 
+                    <label >Description</label>
+                    <textarea 
+                    rows="7" 
                     className="form-control"
                     type="password"  
-                    name="Password"
+                    name="description"
                     onChange={formik.handleChange}
-                    value={formik.values.Password}  
-                    placeholder="Password" />
+                    value={formik.values.description}  
+                    placeholder="description" />
                 </div>
 
-                {formik.errors.Password ? (<div className="text-danger">
-                        {formik.errors.Password}
+                {formik.errors.description ? (<div className="text-danger">
+                        {formik.errors.description}
                 </div>): null }
 
-                <button type="submit"   className="btn btn-success btn-block">Submit</button>
+                <div className="form-group">
+                    <label>Image URL</label>
+                    <input 
+                    className="form-control"
+                    type="text"  
+                    name="image"
+                    onChange={formik.handleChange}
+                    value={formik.values.image}  
+                    placeholder="image url here" />
+                </div>
+                {formik.errors.image ? (<div className="text-danger">
+                        {formik.errors.image}
+                </div>): null }
+
+                <button type="submit"  className="btn btn-success btn-block">Post</button>
                 <p className="forgot-password text-center">
-                New to Epic book? Click Register
                 </p>
             </form>
-            <Header />
         </div>
         <div className="custom-shape-divider-bottom-1600971516">
             
@@ -97,4 +110,4 @@ function Login(props) {
 
 
 
-export default Login;
+export default Update;
