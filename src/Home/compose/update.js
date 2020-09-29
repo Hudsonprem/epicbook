@@ -7,7 +7,7 @@ import * as yup from "yup";
 
 
 function Update(props) {
-    const baseUrl = "http://localhost:5000";
+    const baseUrl = "https://epic-book.herokuapp.com";
     const formik = useFormik({
         initialValues : {
             title:props.previous.title,
@@ -26,7 +26,6 @@ function Update(props) {
         onSubmit: (userInputData)=>{
             
            userInputData._id = props.previous._id  ;
-           console.log(userInputData);
            axios.put(baseUrl + "/post/update",userInputData)
            .then(res => { toast.success(res.data)}).then(e => {window.location.reload()})
                

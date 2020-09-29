@@ -12,7 +12,7 @@ export const UpdateDetails = React.createContext();
 
 export default function Post(props) {
 
-  const baseUrl = "http://localhost:5000";
+  const baseUrl = "https://epic-book.herokuapp.com";
 
     const [previousData] = useState({
       _id: props.id,

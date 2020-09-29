@@ -11,7 +11,7 @@ import Update from "./compose/update";
 
 export const Option = React.createContext();
 const Home = (props) => {
-    const baseUrl = "http://localhost:5000";
+    const baseUrl = "https://epic-book.herokuapp.com";
     const [json, setJson] = useState([]);
     const [posts, setposts] = useState([]);
     const [updetails, setupdetails] = useState({});

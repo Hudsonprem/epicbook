@@ -3,6 +3,8 @@ import React from "react";
 export default function Comment(props) {
 
   var imgurl = "https://api.adorable.io/avatars/130/" + props.CommentUser + "png";
+  
+    var date =  new Date(props.date);
   return (
         <div  className="container">
           <hr />
@@ -20,7 +22,7 @@ export default function Comment(props) {
               {props.CommentUser}
                
               </p> <span className="text-muted font-italic ">
-                  {props.date}
+                  {date.toUTCString()}
                 </span>
               <p>
                 {props.comment}
