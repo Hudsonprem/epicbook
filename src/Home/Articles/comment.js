@@ -17,7 +17,7 @@ export default function Comment(props) {
                 style={{ width: "70px",  backgroundColor:"#bfcdea" }}
               />
             </div>
-            <div className="col-10 text-left">
+            <div className="col-10 text-left" style={{paddingLeft:"35px"}}>
               <p className="badge badge-info ">
               {props.CommentUser}
                
