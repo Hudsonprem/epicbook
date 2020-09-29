@@ -42,7 +42,7 @@ function SignUp(props) {
             axios.post(baseUrl + "/user/register",userInputData)
             .then(res => {
                 toast.success("successfully");
-                props.history.push("/login");
+                props.history.push("/");
             })
             .catch(err => {
                 toast.error(err.response.data)    
