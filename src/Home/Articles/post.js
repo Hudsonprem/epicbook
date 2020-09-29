@@ -14,6 +14,8 @@ export default function Post(props) {
 
   const baseUrl = "https://epic-book.herokuapp.com";
 
+    var forID =uuidv4();
+
     const [previousData] = useState({
       _id: props.id,
       title: props.title,
@@ -70,7 +72,7 @@ export default function Post(props) {
           
                     <button type="button" className="btn btn-primary"
                       onClick={(e) => {
-                        var x = document.getElementById("hello");
+                        var x = document.getElementById(forID);
                         x.classList.toggle("d-none");
                       }}>
                       Replies <span className="badge badge-light">{props.comment.length}</span>
@@ -97,7 +99,7 @@ export default function Post(props) {
           </button>
         </div>
       </form>
-      <div className="d-none" id="hello">
+      <div className="d-none" id={forID}>
       {
         props.comment.map( (e) => {
           return <Comment key={uuidv4()} CommentUser={e.name} date={e.date} comment={e.comments} />
